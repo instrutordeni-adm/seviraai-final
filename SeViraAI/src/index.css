@@ -1,0 +1,41 @@
+@import "tailwindcss";
+
+@theme {
+  --color-asphalt: #111111;
+  --color-asphalt-light: #1a1a1a;
+  --color-construction: #FFD700;
+  --color-construction-hover: #e6c200;
+  --color-concrete: #333333;
+  --color-concrete-light: #4d4d4d;
+
+  --font-sans: 'Inter', sans-serif;
+  --font-heading: 'Montserrat', sans-serif;
+
+  --animate-marquee-left: marqueeLeft 30s linear infinite;
+  --animate-marquee-right: marqueeRight 30s linear infinite;
+  --animate-pulse-fast: pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  --animate-pulse-subtle: pulseSubtle 3s infinite;
+  --animate-pulse-glow: pulseGlow 3s infinite;
+  --animate-pulse-glow-subtle: pulseGlowSubtle 4s infinite;
+
+  @keyframes marqueeLeft {
+    0% { transform: translateX(0%); }
+    100% { transform: translateX(-50%); }
+  }
+  @keyframes marqueeRight {
+    0% { transform: translateX(-50%); }
+    100% { transform: translateX(0%); }
+  }
+  @keyframes pulseSubtle {
+    0%, 100% { transform: scale(1); box-shadow: 0 0 10px rgba(255,215,0,0.1); }
+    50% { transform: scale(1.01); box-shadow: 0 0 15px rgba(255,215,0,0.2); }
+  }
+  @keyframes pulseGlow {
+    0%, 100% { transform: scale(1); box-shadow: 0 0 15px 2px rgba(255,215,0,0.15); }
+    50% { transform: scale(1.02); box-shadow: 0 0 35px 8px rgba(255,215,0,0.4); }
+  }
+  @keyframes pulseGlowSubtle {
+    0%, 100% { box-shadow: 0 0 15px 0px rgba(255,215,0,0.05); }
+    50% { box-shadow: 0 0 25px 2px rgba(255,215,0,0.15); }
+  }
+}
