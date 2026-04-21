@@ -58,6 +58,79 @@
     </style>
 </head>
 <body class="font-sans antialiased selection:bg-construction selection:text-asphalt">
+
+    <style>
+        /* Scroll reveal animation */
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        .scroll-reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .scroll-reveal-delay-1 { transition-delay: 0.1s; }
+        .scroll-reveal-delay-2 { transition-delay: 0.2s; }
+        .scroll-reveal-delay-3 { transition-delay: 0.3s; }
+        .scroll-reveal-delay-4 { transition-delay: 0.4s; }
+        .scroll-reveal-delay-5 { transition-delay: 0.5s; }
+        .scroll-reveal-delay-6 { transition-delay: 0.6s; }
+
+        /* Pain card hover */
+        .pain-card {
+            background: linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%);
+            border: 1px solid rgba(255,255,255,0.07);
+            transition: all 0.4s ease;
+        }
+        .pain-card:hover {
+            border-color: rgba(255, 59, 59, 0.3);
+            background: linear-gradient(135deg, rgba(255,59,59,0.05) 0%, rgba(255,59,59,0.02) 100%);
+            transform: translateY(-4px);
+        }
+
+        /* Result card */
+        .result-card {
+            background: linear-gradient(135deg, rgba(255,215,0,0.05) 0%, rgba(255,215,0,0.02) 100%);
+            border: 1px solid rgba(255,215,0,0.12);
+            transition: all 0.4s ease;
+        }
+        .result-card:hover {
+            border-color: rgba(255,215,0,0.4);
+            background: linear-gradient(135deg, rgba(255,215,0,0.1) 0%, rgba(255,215,0,0.05) 100%);
+            transform: translateY(-6px);
+            box-shadow: 0 20px 40px rgba(255,215,0,0.1);
+        }
+
+        /* Section divider */
+        .section-divider {
+            background: linear-gradient(90deg, transparent, rgba(255,215,0,0.3), transparent);
+            height: 1px;
+            width: 100%;
+        }
+
+        /* Banner hero fade-in */
+        @keyframes heroFadeIn {
+            from { opacity: 0; transform: scale(1.02); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        .hero-banner-img {
+            animation: heroFadeIn 1.2s cubic-bezier(0.19, 1, 0.22, 1) forwards;
+            animation-delay: 0.2s;
+            opacity: 0;
+        }
+
+        /* Check vs X table */
+        .check-item { color: #FFD700; }
+        .x-item { color: #ff4444; }
+
+        /* Guarantee card */
+        .guarantee-card {
+            background: linear-gradient(135deg, rgba(255,215,0,0.08) 0%, rgba(255,215,0,0.02) 100%);
+            border: 2px solid rgba(255,215,0,0.25);
+        }
+    </style>
+
     <!-- Global Liquid Glass Background -->
     <div class="fixed inset-0 z-[-1] bg-[#0a0a0a] overflow-hidden">
         <div class="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-construction/20 rounded-full blur-[120px] mix-blend-screen animate-pulse-subtle"></div>
@@ -118,6 +191,19 @@
         </a>
     </header>
 
+    <!-- BANNER HERO com fade-in -->
+    <div class="w-full px-4 md:px-8 max-w-6xl mx-auto -mt-2 mb-4 relative z-10">
+        <div class="relative rounded-2xl md:rounded-3xl overflow-hidden shadow-[0_0_60px_rgba(255,215,0,0.15)]">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent z-10 pointer-events-none"></div>
+            <img 
+                src="/assets/banner-hero.png" 
+                alt="Aprenda a Criar Conteúdo com IA — Se Vira AI" 
+                class="hero-banner-img w-full h-auto object-cover block"
+                onerror="this.parentElement.parentElement.style.display='none'"
+            >
+        </div>
+    </div>
+
     <section class="relative pt-12 pb-20 overflow-hidden">
         <!-- Parallax Background -->
         <div class="absolute inset-0 z-0 bg-white/[0.02] backdrop-blur-3xl"></div>
@@ -129,13 +215,10 @@
             </div>
             
             <h1 class="font-heading text-4xl md:text-6xl font-black mb-10 leading-tight tracking-tight text-justify [text-align-last:center] md:[text-align-last:left]">
-                <span class="inline-block animate-reveal-up opacity-0">Cansado de</span> 
-                <span class="text-construction uppercase inline-block animate-reveal-up opacity-0" style="animation-delay: 0.2s;">QUEBRAR A CABEÇA</span> 
-                <span class="inline-block animate-reveal-up opacity-0" style="animation-delay: 0.4s;">com criação de</span> 
-                <span class="bg-gradient-to-r from-construction to-white bg-clip-text text-transparent italic uppercase inline-block animate-reveal-up opacity-0" style="animation-delay: 0.6s;">CONTEÚDO</span>? 
-                <span class="inline-block animate-reveal-up opacity-0" style="animation-delay: 0.8s;">Aqui nós vamos te ensinar a</span> 
-                <span class="text-construction uppercase inline-block animate-reveal-up opacity-0" style="animation-delay: 1s;">SE VIRAR</span> 
-                <span class="inline-block animate-reveal-up opacity-0" style="animation-delay: 1.2s;">com IA!</span>
+                <span class="inline-block animate-reveal-up opacity-0">Quer aprender a criar</span> 
+                <span class="bg-gradient-to-r from-construction to-white bg-clip-text text-transparent italic uppercase inline-block animate-reveal-up opacity-0" style="animation-delay: 0.3s;">conteúdo com IA?</span> 
+                <span class="inline-block animate-reveal-up opacity-0" style="animation-delay: 0.6s;">Aqui você vai aprender a</span> 
+                <span class="text-construction uppercase inline-block animate-reveal-up opacity-0" style="animation-delay: 0.9s;">SE VIRAR!</span>
             </h1>
             
             <p class="text-lg md:text-2xl text-gray-300 mb-10 max-w-3xl mx-auto leading-relaxed text-justify opacity-0 animate-fade-in-up" style="animation-delay: 1.5s;">
@@ -186,6 +269,112 @@
             </div>
         </div>
     </section>
+
+    <!-- SEÇÃO: DOR — Reconhece essa situação? -->
+    <section class="py-24 relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-b from-black/0 via-red-950/5 to-black/0 pointer-events-none"></div>
+        <div class="container mx-auto px-4 max-w-5xl">
+
+            <div class="text-center mb-16 scroll-reveal">
+                <span class="inline-block bg-red-500/10 border border-red-500/30 text-red-400 text-xs font-bold uppercase tracking-widest px-4 py-2 rounded-full mb-4">Você se identifica?</span>
+                <h2 class="font-heading text-4xl md:text-5xl font-black text-white leading-tight">
+                    RECONHECE ESSA <span class="text-red-400">SITUAÇÃO?</span>
+                </h2>
+                <p class="text-gray-400 text-lg mt-4 max-w-2xl mx-auto">Você está pagando caro para depender de quem não entende do seu negócio</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+
+                <div class="pain-card rounded-2xl p-6 scroll-reveal scroll-reveal-delay-1">
+                    <div class="flex items-start gap-4">
+                        <div class="w-12 h-12 rounded-xl bg-red-500/10 flex items-center justify-center flex-shrink-0 text-red-400 text-xl">
+                            <i class="fa-solid fa-building"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-white text-lg mb-1">Agência cobra R$2.000/mês e entrega pouca coisa</h3>
+                            <p class="text-gray-400 text-sm leading-relaxed">Você paga, espera 3 dias por um post e ainda precisa pedir refazer 4 vezes.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pain-card rounded-2xl p-6 scroll-reveal scroll-reveal-delay-2">
+                    <div class="flex items-start gap-4">
+                        <div class="w-12 h-12 rounded-xl bg-red-500/10 flex items-center justify-center flex-shrink-0 text-red-400 text-xl">
+                            <i class="fa-solid fa-camera"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-white text-lg mb-1">Foto de produto ruim afasta cliente</h3>
+                            <p class="text-gray-400 text-sm leading-relaxed">Fotógrafo cobra R$600 por sessão e você ainda fica sem imagens do dia a dia.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pain-card rounded-2xl p-6 scroll-reveal scroll-reveal-delay-3">
+                    <div class="flex items-start gap-4">
+                        <div class="w-12 h-12 rounded-xl bg-red-500/10 flex items-center justify-center flex-shrink-0 text-red-400 text-xl">
+                            <i class="fa-solid fa-eye-slash"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-white text-lg mb-1">Sem conteúdo = sem visibilidade</h3>
+                            <p class="text-gray-400 text-sm leading-relaxed">A concorrência posta todo dia e você fica dias sem nada porque não tem quem faça.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pain-card rounded-2xl p-6 scroll-reveal scroll-reveal-delay-4">
+                    <div class="flex items-start gap-4">
+                        <div class="w-12 h-12 rounded-xl bg-red-500/10 flex items-center justify-center flex-shrink-0 text-red-400 text-xl">
+                            <i class="fa-solid fa-microphone-slash"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-white text-lg mb-1">Tem vergonha de aparecer (ou microfone ruim)</h3>
+                            <p class="text-gray-400 text-sm leading-relaxed">Não quer gravar vídeo, não tem equipamento, não sabe editar. Resultado: zero vídeos.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pain-card rounded-2xl p-6 scroll-reveal scroll-reveal-delay-5">
+                    <div class="flex items-start gap-4">
+                        <div class="w-12 h-12 rounded-xl bg-red-500/10 flex items-center justify-center flex-shrink-0 text-red-400 text-xl">
+                            <i class="fa-solid fa-palette"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-white text-lg mb-1">Logo e identidade visual que não convence</h3>
+                            <p class="text-gray-400 text-sm leading-relaxed">Você mesmo fez no Canva e sabe que ficou aquém do que o seu negócio merece.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pain-card rounded-2xl p-6 scroll-reveal scroll-reveal-delay-6">
+                    <div class="flex items-start gap-4">
+                        <div class="w-12 h-12 rounded-xl bg-red-500/10 flex items-center justify-center flex-shrink-0 text-red-400 text-xl">
+                            <i class="fa-solid fa-robot"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-white text-lg mb-1">Ouviu falar de IA mas não sabe por onde começar</h3>
+                            <p class="text-gray-400 text-sm leading-relaxed">Tentou o ChatGPT uma vez e não entendeu como transformar em resultado real de negócio.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- A VIRADA -->
+            <div class="mt-16 text-center scroll-reveal">
+                <div class="inline-block bg-gradient-to-br from-construction/10 to-construction/5 border border-construction/25 rounded-3xl p-10 max-w-3xl">
+                    <div class="text-5xl mb-4">⚡</div>
+                    <h3 class="font-heading text-3xl md:text-4xl font-black text-white mb-4">A Virada</h3>
+                    <p class="text-xl text-gray-300 leading-relaxed mb-2">
+                        E se você pudesse produzir <strong class="text-construction">tudo isso sozinho, em minutos</strong>,
+                        sem pagar pra ninguém e sem aparecer em câmera?
+                    </p>
+                    <p class="text-lg text-construction font-bold mt-4">É exatamente isso que você vai aprender no Se Vira AI.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider max-w-4xl mx-auto"></div>
 
     <!-- 4. Marquee de Criações (Swiper/Capas do Curso) -->
     <section class="py-12 overflow-hidden bg-black/50 border-y border-white/5">
@@ -284,6 +473,202 @@
             <img src="/assets/banner-ferramentas.jpg" alt="Ferramentas de Inteligência Artificial" class="w-full h-full object-cover rounded-3xl" onerror="this.src='https://placehold.co/1000x600/222/FFD700?text=Banner+de+Ferramentas'">
         </div>
     </div>
+
+    <!-- SEÇÃO: PARA QUEM É -->
+    <section class="py-24 relative">
+        <div class="container mx-auto px-4 max-w-5xl">
+            <div class="text-center mb-16 scroll-reveal">
+                <span class="inline-block bg-construction/10 border border-construction/30 text-construction text-xs font-bold uppercase tracking-widest px-4 py-2 rounded-full mb-4">Perfil do Aluno</span>
+                <h2 class="font-heading text-4xl md:text-5xl font-black text-white">Este método foi criado <span class="text-construction">para você?</span></h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- É pra você se -->
+                <div class="bg-white/[0.03] border border-white/10 rounded-3xl p-8 scroll-reveal scroll-reveal-delay-1">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="w-10 h-10 rounded-full bg-construction/20 flex items-center justify-center">
+                            <i class="fa-solid fa-check text-construction"></i>
+                        </div>
+                        <h3 class="font-heading text-xl font-black text-white">É pra você se...</h3>
+                    </div>
+                    <ul class="space-y-4">
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-check check-item mt-1 flex-shrink-0"></i>
+                            <span class="text-gray-300 text-sm leading-relaxed">Você tem um pequeno negócio, loja ou empreendimento e quer parar de depender de agência</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-check check-item mt-1 flex-shrink-0"></i>
+                            <span class="text-gray-300 text-sm leading-relaxed">Você é freelancer ou prestador de serviços e quer entregar mais valor para seus clientes</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-check check-item mt-1 flex-shrink-0"></i>
+                            <span class="text-gray-300 text-sm leading-relaxed">Você quer criar uma renda extra vendendo serviços de criação de conteúdo com IA</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-check check-item mt-1 flex-shrink-0"></i>
+                            <span class="text-gray-300 text-sm leading-relaxed">Você é completo iniciante em IA e quer aprender do zero com linguagem simples</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-check check-item mt-1 flex-shrink-0"></i>
+                            <span class="text-gray-300 text-sm leading-relaxed">Você trabalha em marketing ou social media e quer multiplicar sua produtividade</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Não é pra você se -->
+                <div class="bg-white/[0.03] border border-white/10 rounded-3xl p-8 scroll-reveal scroll-reveal-delay-2">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="w-10 h-10 rounded-full bg-red-500/20 flex items-center justify-center">
+                            <i class="fa-solid fa-xmark text-red-400"></i>
+                        </div>
+                        <h3 class="font-heading text-xl font-black text-white">Não é pra você se...</h3>
+                    </div>
+                    <ul class="space-y-4">
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-xmark x-item mt-1 flex-shrink-0"></i>
+                            <span class="text-gray-400 text-sm leading-relaxed">Você está buscando uma fórmula mágica para ficar rico sem fazer nada</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-xmark x-item mt-1 flex-shrink-0"></i>
+                            <span class="text-gray-400 text-sm leading-relaxed">Você quer um curso teórico sem colocar a mão na massa</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-xmark x-item mt-1 flex-shrink-0"></i>
+                            <span class="text-gray-400 text-sm leading-relaxed">Você já é especialista em IA generativa e domina todas as ferramentas avançadas</span>
+                        </li>
+                    </ul>
+                    <div class="mt-8 p-4 bg-construction/5 border border-construction/20 rounded-xl">
+                        <p class="text-construction font-bold text-sm italic">&ldquo;Se você se identificou com o lado esquerdo, você veio ao lugar certo.&rdquo;</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-12 scroll-reveal">
+                <a href="#planos" class="inline-flex items-center gap-3 bg-construction hover:bg-construction-hover text-asphalt font-black text-lg py-5 px-12 rounded-full transition-all duration-300 hover:scale-105 hover:shadow-[0_0_40px_rgba(255,215,0,0.5)]">
+                    SIM, É PARA MIM — QUERO COMEÇAR <i class="fa-solid fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider max-w-4xl mx-auto"></div>
+
+    <!-- SEÇÃO: DEPOIS DO CURSO — Resultados Concretos -->
+    <section class="py-24 relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-b from-black/0 via-construction/3 to-black/0 pointer-events-none"></div>
+        <div class="container mx-auto px-4 max-w-6xl">
+
+            <div class="text-center mb-5 scroll-reveal">
+                <span class="inline-block bg-construction/10 border border-construction/30 text-construction text-xs font-bold uppercase tracking-widest px-4 py-2 rounded-full mb-4">Depois do Curso</span>
+                <h2 class="font-heading text-4xl md:text-5xl font-black text-white">O que você vai conseguir fazer</h2>
+                <p class="text-gray-400 text-lg mt-3">com as suas <strong class="text-white">próprias mãos</strong></p>
+                <p class="text-gray-500 text-sm mt-3 max-w-xl mx-auto">Não são promessas vagas. São habilidades concretas que você vai desenvolver aula por aula.</p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 mt-14">
+
+                <div class="result-card rounded-2xl p-7 scroll-reveal scroll-reveal-delay-1">
+                    <div class="text-4xl mb-4">📸</div>
+                    <h3 class="font-bold text-white text-lg mb-2">Fotos de produto profissionais</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">Sem câmera, sem fotógrafo, sem estúdio. Resultado de agência em menos de 5 minutos.</p>
+                </div>
+
+                <div class="result-card rounded-2xl p-7 scroll-reveal scroll-reveal-delay-2">
+                    <div class="text-4xl mb-4">🎬</div>
+                    <h3 class="font-bold text-white text-lg mb-2">Reels e TikToks para o seu negócio</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">Vídeos de venda com narração, efeitos e corte profissional — sem aparecer na câmera.</p>
+                </div>
+
+                <div class="result-card rounded-2xl p-7 scroll-reveal scroll-reveal-delay-3">
+                    <div class="text-4xl mb-4">🤖</div>
+                    <h3 class="font-bold text-white text-lg mb-2">Influenciador virtual do seu negócio</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">Crie um personagem digital que promove sua marca 24h por dia no Instagram e TikTok.</p>
+                </div>
+
+                <div class="result-card rounded-2xl p-7 scroll-reveal scroll-reveal-delay-4">
+                    <div class="text-4xl mb-4">🎙️</div>
+                    <h3 class="font-bold text-white text-lg mb-2">Locução profissional sem microfone</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">Gere voz humana ultra-realista para narrar seus vídeos, anúncios e apresentações.</p>
+                </div>
+
+                <div class="result-card rounded-2xl p-7 scroll-reveal scroll-reveal-delay-5">
+                    <div class="text-4xl mb-4">🎨</div>
+                    <h3 class="font-bold text-white text-lg mb-2">Logo e identidade visual completa</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">Crie uma marca visual profissional que passa credibilidade para seus clientes.</p>
+                </div>
+
+                <div class="result-card rounded-2xl p-7 scroll-reveal scroll-reveal-delay-6">
+                    <div class="text-4xl mb-4">💰</div>
+                    <h3 class="font-bold text-white text-lg mb-2">Cobrar por esses serviços para clientes</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">Muitos alunos passam a oferecer esses serviços e faturar R$2.000–R$5.000/mês como freelancer.</p>
+                </div>
+
+            </div>
+
+            <div class="mt-14 text-center scroll-reveal">
+                <div class="inline-block bg-white/5 border border-white/10 rounded-2xl px-8 py-6 max-w-2xl">
+                    <p class="text-gray-300 text-lg leading-relaxed">
+                        Em resumo: você vai <strong class="text-white">se virar sozinho em tudo</strong> que hoje você paga caro para terceiros fazerem.
+                        <br><span class="text-gray-500 text-sm mt-2 block">E vai fazer em qualquer computador, sem precisar de hardware potente.</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider max-w-4xl mx-auto"></div>
+
+    <!-- SEÇÃO: PROVA SOCIAL -->
+    <section class="py-24 relative">
+        <div class="container mx-auto px-4 max-w-5xl">
+            <div class="text-center mb-16 scroll-reveal">
+                <span class="inline-block bg-construction/10 border border-construction/30 text-construction text-xs font-bold uppercase tracking-widest px-4 py-2 rounded-full mb-4">Prova Social</span>
+                <h2 class="font-heading text-4xl md:text-5xl font-black text-white">Alunos que já <span class="text-construction">se viraram</span></h2>
+                <p class="text-gray-400 text-lg mt-3">Veja o que quem já entrou no método está dizendo e produzindo.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="bg-white/[0.04] border border-white/10 rounded-2xl p-7 scroll-reveal scroll-reveal-delay-1 hover:border-construction/30 transition-all duration-300">
+                    <div class="flex gap-1 text-construction mb-4 text-sm">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="text-gray-300 text-sm leading-relaxed italic mb-5">&ldquo;Substitua por depoimento real de aluno — quanto tempo levou pra criar o primeiro conteúdo, qual foi o resultado, se conseguiu economizar dinheiro ou atrair clientes.&rdquo;</p>
+                    <div class="flex items-center gap-3 pt-4 border-t border-white/5">
+                        <div class="w-10 h-10 rounded-full bg-concrete flex items-center justify-center text-construction font-bold">A</div>
+                        <div><p class="text-white font-bold text-sm">[Nome do Aluno]</p><p class="text-gray-500 text-xs">[Profissão ou cidade]</p></div>
+                    </div>
+                </div>
+                <div class="bg-white/[0.04] border border-white/10 rounded-2xl p-7 scroll-reveal scroll-reveal-delay-2 hover:border-construction/30 transition-all duration-300">
+                    <div class="flex gap-1 text-construction mb-4 text-sm">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="text-gray-300 text-sm leading-relaxed italic mb-5">&ldquo;Substitua por depoimento real de aluno — o que aprendeu, qual problema resolveu, o que deixou de pagar/contratar.&rdquo;</p>
+                    <div class="flex items-center gap-3 pt-4 border-t border-white/5">
+                        <div class="w-10 h-10 rounded-full bg-concrete flex items-center justify-center text-construction font-bold">B</div>
+                        <div><p class="text-white font-bold text-sm">[Nome do Aluno]</p><p class="text-gray-500 text-xs">[Profissão ou cidade]</p></div>
+                    </div>
+                </div>
+                <div class="bg-white/[0.04] border border-white/10 rounded-2xl p-7 scroll-reveal scroll-reveal-delay-3 hover:border-construction/30 transition-all duration-300">
+                    <div class="flex gap-1 text-construction mb-4 text-sm">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="text-gray-300 text-sm leading-relaxed italic mb-5">&ldquo;Substitua por depoimento real de aluno — experiência de aprendizado, facilidade das aulas, suporte recebido.&rdquo;</p>
+                    <div class="flex items-center gap-3 pt-4 border-t border-white/5">
+                        <div class="w-10 h-10 rounded-full bg-concrete flex items-center justify-center text-construction font-bold">C</div>
+                        <div><p class="text-white font-bold text-sm">[Nome do Aluno]</p><p class="text-gray-500 text-xs">[Profissão ou cidade]</p></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-10 bg-white/[0.03] border border-white/10 rounded-2xl p-6 text-center scroll-reveal">
+                <div class="text-3xl mb-3">💬</div>
+                <p class="text-construction font-bold text-sm uppercase tracking-wider mb-2">Prints de WhatsApp / Instagram / Vídeos de Depoimento</p>
+                <p class="text-gray-500 text-sm max-w-xl mx-auto">Dica: Adicione aqui screenshots reais de conversas no WhatsApp, comentários do Instagram ou embeds de vídeos de alunos falando sobre o resultado. Esse tipo de prova social é o mais poderoso para o público brasileiro.</p>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider max-w-4xl mx-auto"></div>
 
     <!-- 5. Os Módulos (Conteúdo Prático) -->
     <section class="bg-white/[0.03] backdrop-blur-xl py-20 border-y border-white/10 shadow-[0_8px_32px_0_rgba(0,0,0,0.3)]">
@@ -422,7 +807,45 @@
         </div>
     </section>
 
+    <!-- SEÇÃO: GARANTIA -->
+    <section class="py-20 relative">
+        <div class="container mx-auto px-4 max-w-3xl">
+            <div class="guarantee-card rounded-3xl p-10 text-center scroll-reveal">
+                <div class="w-20 h-20 rounded-full bg-construction/15 border-2 border-construction/40 flex items-center justify-center mx-auto mb-6">
+                    <i class="fa-solid fa-shield-halved text-construction text-3xl"></i>
+                </div>
+                <h2 class="font-heading text-3xl md:text-4xl font-black text-white mb-3">Garantia Incondicional de 7 Dias</h2>
+                <p class="text-gray-300 leading-relaxed mb-8 max-w-xl mx-auto">
+                    Se por qualquer motivo você entrar no Se Vira AI, assistir às aulas e sentir que o método não é pra você — basta mandar uma mensagem em até <strong class="text-white">7 dias corridos</strong> e devolvemos 100% do seu dinheiro, sem perguntas, sem burocracia, sem enrolação.
+                </p>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+                    <div class="bg-white/5 rounded-xl p-4">
+                        <div class="text-construction text-2xl mb-2"><i class="fa-solid fa-rotate-left"></i></div>
+                        <p class="text-white font-bold text-sm">Reembolso total</p>
+                        <p class="text-gray-500 text-xs mt-1">100% do valor pago, sem desconto</p>
+                    </div>
+                    <div class="bg-white/5 rounded-xl p-4">
+                        <div class="text-construction text-2xl mb-2"><i class="fa-solid fa-comment-slash"></i></div>
+                        <p class="text-white font-bold text-sm">Sem perguntas</p>
+                        <p class="text-gray-500 text-xs mt-1">Não precisamos saber o motivo</p>
+                    </div>
+                    <div class="bg-white/5 rounded-xl p-4">
+                        <div class="text-construction text-2xl mb-2"><i class="fa-regular fa-calendar-check"></i></div>
+                        <p class="text-white font-bold text-sm">Em até 7 dias</p>
+                        <p class="text-gray-500 text-xs mt-1">A partir da data da compra</p>
+                    </div>
+                </div>
+                <p class="text-construction font-bold italic text-sm">&ldquo;Compre, teste as ferramentas, crie seus primeiros conteúdos. Se não gostar, devolvemos tudo.&rdquo;</p>
 
+                <a href="https://pay.kiwify.com.br/5GEkAbh" class="mt-8 inline-flex items-center gap-3 bg-construction hover:bg-construction-hover text-asphalt font-black text-lg py-5 px-12 rounded-full transition-all duration-300 hover:scale-105 hover:shadow-[0_0_40px_rgba(255,215,0,0.5)]">
+                    GARANTIR MEU ACESSO AGORA <i class="fa-solid fa-bolt"></i>
+                </a>
+                <p class="text-gray-500 text-xs mt-4">ou parcelado em 12x de R$ 10,65 — Pix, Boleto ou Cartão</p>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider max-w-4xl mx-auto"></div>
 
     <!-- 7. Sobre os Instrutores -->
     <section class="bg-white/[0.03] backdrop-blur-xl py-20 border-y border-white/10 shadow-[0_8px_32px_0_rgba(0,0,0,0.3)]">
@@ -2930,6 +3353,18 @@
                 item.style.opacity = '0';
             });
             updateGallery('avatares');
+
+            // Scroll Reveal (Intersection Observer)
+            const revealElements = document.querySelectorAll('.scroll-reveal');
+            const revealObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        revealObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.12 });
+            revealElements.forEach(el => revealObserver.observe(el));
         });
     </script>
 </body>
